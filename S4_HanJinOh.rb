@@ -11,7 +11,6 @@ def initialize (price, name, amount)#construct
   @name = name
   @amount = amount
 end
-
 end
 
 $drink.push(Drink.new(120,"コーラ",5))＃コーラ設定
@@ -59,7 +58,6 @@ if (i <= $drink.length) and ($total >= $drink[i].price) and ($drink[i].amount!= 
   refund($total)
   $total = 0
 end
-
 end
 
 def juceManagerment()#ジュース管理
@@ -103,7 +101,7 @@ while true do
     $total = 0
   when 3 then purchase()
   when 4 then juceManagerment()
-  end
+end
 puts("---------------------------------------------------")
 puts("\n 残高 : " + $total.to_s + "円\n\n")
 ableDrink()
