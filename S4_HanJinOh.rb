@@ -100,11 +100,11 @@ while true do #interfaceを出力
   input = gets.chomp
 
   case input.to_i
-  when 1 then inputMoney()
-  when 2 then refund($total)
+  when 1 then inputMoney()#お金を入れる
+  when 2 then refund($total)#お金を払い戻し
     $total = 0
-  when 3 then purchase()
-  when 4 then juceManagerment()
+  when 3 then purchase()#ジュースを購入
+  when 4 then juceManagerment()#ジュースを管理
 end
 puts("---------------------------------------------------")
 puts("\n 残高 : " + $total.to_s + "円\n\n")
