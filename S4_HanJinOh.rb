@@ -13,7 +13,7 @@ def initialize (price, name, amount)#construct
 end
 end
 
-$drink.push(Drink.new(120,"コーラ",5))＃コーラ設定
+$drink.push(Drink.new(120,"コーラ",5))
 
 def inputMoney() #お金を入れる
   puts("\nお金を入れてくだたい。（入力）")
@@ -107,7 +107,7 @@ while true do #interfaceを出力
   when 4 then juceManagerment()
 end
 puts("---------------------------------------------------")
-puts("\n 残高 : " + $total.to_s + "円\n\n") #残高と購入可能飲料を出力
-ableDrink()
+puts("\n 残高 : " + $total.to_s + "円\n\n")
+ableDrink()#入可能ジュースを出力
 puts("\n")
 end
