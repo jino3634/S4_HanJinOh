@@ -25,18 +25,18 @@ def inputMoney() #お金を入れる
   when 100 then $total += inputMoney
   when 500 then $total += inputMoney
   when 1000 then $total += inputMoney
-  else refund(inputMoney)
+  else refund(inputMoney)#以外は払い戻し
   end
 end
 
-def refund(money) #払い戻し機能
+def refund(money) #moneyを払い戻し
 puts("\n払い戻し " + money.to_s)
 end
 
 def ableDrink()　#購入可能飲料確認
 for i in 0..$drink.length-1
   able = false
-if ($total >= $drink[i].price) and ($drink[i].amount!=0)
+if ($total >= $drink[i].price) and ($drink[i].amount!=0)#お金、数量を確認
   able = true
 end
 sign = able ? ("可能") : ("不可")
@@ -50,6 +50,8 @@ getDrinkInfo()
 puts("ジュースの番号を押してください。")
 input = gets.chomp
 i = input.to_i - 1
+
+#存在する番号か、お金、数量を確認
 if (i <= $drink.length) and ($total >= $drink[i].price) and ($drink[i].amount!= 0)
   $total -= $drink[i].price
   $saving += $drink[i].price
@@ -57,7 +59,7 @@ if (i <= $drink.length) and ($total >= $drink[i].price) and ($drink[i].amount!= 
   puts("\n"+$drink[i].name+"が出ました。")
   refund($total)
   $total = 0
-end
+end#該当事項がないと、何もしない。
 end
 
 def juceManagerment()#ジュース管理
@@ -78,23 +80,25 @@ def addDrink()#ジュースを追加
   name = gets.chomp
   puts("ジュースの数を入力してください")
   amount = gets.chomp
-  $drink.push(Drink.new(price.to_i, name, amount.to_i))
+  $drink.push(Drink.new(price.to_i, name, amount.to_i))#Listにジュースを追加
   puts("ジュース登録完了。")
 end
 
 def getDrinkInfo()#ジュースの情報を閲覧
 puts("\n")
 for i in 0..$drink.length-1
+  #ジュースの番号、名、値段、量を出力
   puts((i+1).to_s+". "+$drink[i].price.to_s+"円 "+$drink[i].name+" "+$drink[i].amount.to_s+"缶")
 end
 puts("\n")
 end
 
 # <main>
-while true do
+while true do #interfaceを出力
   puts("自動販売機　System.\n1.金を入れる\n2.払い戻し\n3.購入\n4.ジュース管理")
   puts("\n番号を入力してください。")
   input = gets.chomp
+
   case input.to_i
   when 1 then inputMoney()
   when 2 then refund($total)
@@ -103,7 +107,7 @@ while true do
   when 4 then juceManagerment()
 end
 puts("---------------------------------------------------")
-puts("\n 残高 : " + $total.to_s + "円\n\n")
+puts("\n 残高 : " + $total.to_s + "円\n\n") #残高と購入可能飲料を出力
 ableDrink()
 puts("\n")
 end
