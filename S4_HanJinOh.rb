@@ -108,6 +108,6 @@ while true do #interfaceを出力
 end
 puts("---------------------------------------------------")
 puts("\n 残高 : " + $total.to_s + "円\n\n")
-ableDrink()#入可能ジュースを出力
+ableDrink()#購入可能ジュースを出力
 puts("\n")
 end
