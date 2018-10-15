@@ -6,7 +6,7 @@ class Drink
 attr_reader :price, :name, :amount #getter method
 attr_writer :amount #setter method
 
-def initialize (price, name, amount)
+def initialize (price, name, amount)#construct
   @price = price
   @name = name
   @amount = amount
@@ -14,9 +14,9 @@ end
 
 end
 
-$drink.push(Drink.new(120,"コーラ",5))
+$drink.push(Drink.new(120,"コーラ",5))＃コーラ設定
 
-def inputMoney()
+def inputMoney() #お金を入れる
   puts("\nお金を入れてくだたい。（入力）")
   input = gets.chomp
   inputMoney = input.to_i
@@ -30,11 +30,11 @@ def inputMoney()
   end
 end
 
-def refund(money)
+def refund(money) #払い戻し機能
 puts("\n払い戻し " + money.to_s)
 end
 
-def ableDrink()
+def ableDrink()　#購入可能飲料確認
 for i in 0..$drink.length-1
   able = false
 if ($total >= $drink[i].price) and ($drink[i].amount!=0)
@@ -46,7 +46,7 @@ end
 puts("\n")
 end
 
-def purchase()
+def purchase()#購入機能
 getDrinkInfo()
 puts("ジュースの番号を押してください。")
 input = gets.chomp
@@ -62,18 +62,18 @@ end
 
 end
 
-def juceManagerment()
+def juceManagerment()#ジュース管理
   puts("\nジュース管理.\n1.追加\n2.全部見る\n3.以前")
   puts("\n番号を入力してください。")
   input = gets.chomp
   case input.to_i
   when 1 then addDrink()
   when 2 then getDrinkInfo()
-  when 3 then
+  when 3 then #以前
   end
 end
 
-def addDrink()
+def addDrink()#ジュースを追加
   puts("ジュースの値段を入力してください")
   price = gets.chomp
   puts("ジュースの名を入力してください")
@@ -84,7 +84,7 @@ def addDrink()
   puts("ジュース登録完了。")
 end
 
-def getDrinkInfo()
+def getDrinkInfo()#ジュースの情報を閲覧
 puts("\n")
 for i in 0..$drink.length-1
   puts((i+1).to_s+". "+$drink[i].price.to_s+"円 "+$drink[i].name+" "+$drink[i].amount.to_s+"缶")
